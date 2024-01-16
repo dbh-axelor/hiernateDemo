@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    jcenter()
+    mavenLocal()
+}
+
+dependencies {
+    implementation 'org.hibernate:hibernate-core:5.5.6.Final'     // hibernate core
+    implementation 'org.hibernate:hibernate-entitymanager:5.6.15.Final' // hibernate entity manager
+    implementation 'org.postgresql:postgresql:42.7.1'   // postgresql database
+    implementation 'javax.persistence:javax.persistence-api:2.2'
+
+}
+
+application {
+    mainClassName = 'org.example.Main'
+}
