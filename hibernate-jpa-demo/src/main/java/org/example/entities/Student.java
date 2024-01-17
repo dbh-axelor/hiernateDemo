@@ -23,7 +23,7 @@ public class Student {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int stidId;
+	private int studId;
 	private String studName;
 	private String studAdd;
 	private String Studdepartment;
@@ -44,11 +44,11 @@ public class Student {
 	private List<Course> courses;
 
 	public int getStidId() {
-		return stidId;
+		return studId;
 	}
 
 	public void setStidId(int stidId) {
-		this.stidId = stidId;
+		this.studId = stidId;
 	}
 
 	public String getStudName() {
@@ -107,10 +107,10 @@ public class Student {
 		this.courses = courses;
 	}
 
-	public Student(int stidId, String studName, String studAdd, String studdepartment, List<Exam> exams, Phone phone,
+	public Student(int studId, String studName, String studAdd, String studdepartment, List<Exam> exams, Phone phone,
 			College college, List<Course> courses) {
 		super();
-		this.stidId = stidId;
+		this.studId = studId;
 		this.studName = studName;
 		this.studAdd = studAdd;
 		Studdepartment = studdepartment;
