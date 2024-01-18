@@ -35,11 +35,11 @@ public class Student {
 	@JoinColumn(name = "phone_id")
 	private Phone phone;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "college_id")
 	private College college;
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "student_course", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
 	private List<Course> courses;
 

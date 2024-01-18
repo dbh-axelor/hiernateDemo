@@ -8,31 +8,59 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import org.checkerframework.checker.interning.qual.FindDistinct;
 import org.example.entities.College;
 import org.example.entities.Course;
 import org.example.entities.Exam;
 import org.example.entities.Phone;
 import org.example.entities.Student;
+import org.hibernate.engine.query.spi.sql.NativeSQLQueryCollectionReturn;
 
 public class StudentService {
 	
 	public static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Demo-jpa");
 	
 	public static EntityManager entityManager = entityManagerFactory.createEntityManager();
-		
+	
+	
+	
+	public static void updateData(int id){
+		entityManager.getTransaction().begin();;
+
+		try {
+			Student student = entityManager.find(Student.class, id);
+			student.setStuddepartment("CE");
+			System.out.println("Your data has been updated");
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void deleteData(int id){
+		entityManager.getTransaction().begin();;
+
+		try {
+			Student student = entityManager.find(Student.class, id);
+			entityManager.remove(student);
+			System.out.println("Your data has been deleted");
+			entityManager.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 	public static void showData() {
 			try {		
 			List<Student> students = entityManager.createQuery("FROM Student",Student.class).getResultList();
 			
-	
-			
 			for(Student records : students) {
 				System.out.println("Student ID : "+records.getStidId());
 				System.out.println("Student Name : "+records.getStudName());
-				System.out.println();
-				
+				System.out.println("College name: "+records.getCollege().getCollegeName());
 			}
-			
 	
 			entityManager.close();
 		} catch (Exception e) {
